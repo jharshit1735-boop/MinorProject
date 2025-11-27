@@ -17,11 +17,13 @@
   DISABLE_ESLINT_PLUGIN = "true"
   CI = "false"
 
-# Redirect all routes to index.html for React Router (SPA)
+# Redirect all routes to index.html for React SPA (handled by _redirects file in public folder)
+# The _redirects file in public/ will be copied to build/ during build
 [[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200
+  force = true
 
 # Headers for security and performance
 [[headers]]
