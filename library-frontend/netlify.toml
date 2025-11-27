@@ -1,12 +1,21 @@
 [build]
   # Directory to change to before starting a build
-  base = "."
+  # If your repo root contains library-frontend folder, use: base = "library-frontend"
+  # If your repo root IS the library-frontend folder, use: base = "."
+  base = "library-frontend"
   
   # Directory that contains the deploy-ready HTML files and assets
   publish = "build"
   
-  # Build command
-  command = "npm run build"
+  # Build command (install dependencies first, then build)
+  command = "npm ci && npm run build"
+
+# Specify Node version for consistent builds
+[build.environment]
+  NODE_VERSION = "18"
+  # Disable ESLint during build to avoid dependency issues
+  DISABLE_ESLINT_PLUGIN = "true"
+  CI = "false"
 
 # Redirect all routes to index.html for React Router (SPA)
 [[redirects]]
